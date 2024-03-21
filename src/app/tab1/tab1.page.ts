@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {CountriesService} from "../services/countries/countries.service";
+import {Observable} from "rxjs";
+import {Country} from "../models/country.model";
 
 @Component({
   selector: 'app-tab1',
@@ -7,6 +10,12 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
-  constructor() {}
+  countries$: Observable<Country[]>;
+
+  constructor(
+    private countriesService: CountriesService
+  ) {
+    this.countries$ = this.countriesService.index$();
+  }
 
 }

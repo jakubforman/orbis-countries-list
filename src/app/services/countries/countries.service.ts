@@ -8,6 +8,8 @@ import {Country} from "../../models/country.model";
 })
 export class CountriesService {
 
+  country?: Country;
+
   constructor(
     private http: HttpClient
   ) {

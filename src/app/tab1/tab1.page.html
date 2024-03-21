@@ -15,7 +15,8 @@
 
   <ion-list>
     <!--{{countries$ | async | json}}-->
-    <ion-item *ngFor="let country of countries$ | async" routerLink="/country">
+    <ion-item *ngFor="let country of countries$ | async" routerLink="/country"
+              (click)="transferCountry(country)">
       <ion-label>{{ country.name.official }}</ion-label>
     </ion-item>
   </ion-list>

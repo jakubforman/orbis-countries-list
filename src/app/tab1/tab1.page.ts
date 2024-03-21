@@ -18,4 +18,7 @@ export class Tab1Page {
     this.countries$ = this.countriesService.index$();
   }
 
+  transferCountry(country: Country) {
+    this.countriesService.country = country;
+  }
 }

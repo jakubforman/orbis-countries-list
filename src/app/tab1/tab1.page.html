@@ -17,7 +17,13 @@
     <!--{{countries$ | async | json}}-->
     <ion-item *ngFor="let country of countries$ | async" routerLink="/country"
               (click)="transferCountry(country)">
+      <ion-avatar slot="start">
+        <ion-img [src]="country.flags.svg"></ion-img>
+      </ion-avatar>
       <ion-label>{{ country.name.official }}</ion-label>
+      <ion-note slot="end">
+        {{ country.cca2 }}
+      </ion-note>
     </ion-item>
   </ion-list>
 </ion-content>

@@ -4,6 +4,9 @@
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title>{{ country.name.common }}</ion-title>
+    <ion-avatar slot="end">
+      <ion-img [src]="country.coatOfArms.png"></ion-img>
+    </ion-avatar>
   </ion-toolbar>
 </ion-header>
 
@@ -14,22 +17,70 @@
     </ion-toolbar>
   </ion-header>
 
+  <div class="ion-padding">
+    <ion-img [src]="country.flags.png" class="flag"></ion-img>
+  </div>
+
   <ion-list>
-    <ion-item>
-      <ion-label>Name</ion-label>
-      <ion-note slot="end">{{ country.name.official }}</ion-note>
-    </ion-item>
-    <ion-item>
-      <ion-label>Common name</ion-label>
-      <ion-note slot="end">{{ country.name.common }}</ion-note>
-    </ion-item>
-    <ion-item>
-      <ion-label>Area</ion-label>
-      <ion-note slot="end">{{ country.area }} km<sup>2</sup></ion-note>
-    </ion-item>
-    <ion-item>
-      <ion-label>ID</ion-label>
-      <ion-note slot="end">{{ country.cca2 }}</ion-note>
-    </ion-item>
+    <ion-item-group>
+      <ion-item-divider>
+        <ion-label>Basic information</ion-label>
+      </ion-item-divider>
+      <ion-item>
+        <ion-label>CCA2</ion-label>
+        <ion-note slot="end">{{ country.cca2 }}</ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-label>Population</ion-label>
+        <ion-note slot="end">{{ country.population }}</ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-label>Region</ion-label>
+        <ion-note slot="end">{{ country.region }}</ion-note>
+      </ion-item>
+      <ion-item *ngIf="country.borders">
+        <ion-label>Borders</ion-label>
+        <ion-note slot="end">{{ country.borders.join(', ') }}</ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-label>Continent</ion-label>
+        <ion-note slot="end">{{ country.continents.join(', ') }}</ion-note>
+      </ion-item>
+      <ion-item *ngIf="country.capital">
+        <ion-label>Capital</ion-label>
+        <ion-note slot="end">{{ country.capital.join(', ') }}</ion-note>
+      </ion-item>
+    </ion-item-group>
+    <ion-item-group>
+      <ion-item-divider>
+        <ion-label>Names</ion-label>
+      </ion-item-divider>
+      <ion-item>
+        <ion-label>Official name</ion-label>
+        <ion-note slot="end">{{ country.name.official }}</ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-label>Common name</ion-label>
+        <ion-note slot="end">{{ country.name.common }}</ion-note>
+      </ion-item>
+    </ion-item-group>
+    <ion-item-group>
+      <ion-item-divider>
+        <ion-label>Area information</ion-label>
+      </ion-item-divider>
+      <ion-item>
+        <ion-label>Area</ion-label>
+        <ion-note slot="end">{{ country.area }} km<sup>2</sup></ion-note>
+      </ion-item>
+      <ion-item>
+        <ion-label>Timezone</ion-label>
+        <ion-note slot="end">{{ country.timezones.join(', ') }}</ion-note>
+      </ion-item>
+      <ion-item>
+        <!-- TODO: pro toto je třeba mapovat data -->
+        <ion-label>Currency</ion-label>
+        <ion-note slot="end">{{ country.currencies | json }}</ion-note>
+      </ion-item>
+    </ion-item-group>
   </ion-list>
 </ion-content>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {CountriesService} from "../../services/countries/countries.service";
+import {CountriesService, MapCountry} from "../../services/countries/countries.service";
 import {Country} from "../../models/country.model";
 
 @Component({
@@ -9,7 +9,7 @@ import {Country} from "../../models/country.model";
 })
 export class CountryDetailPage {
 
-  country: Country;
+  country: MapCountry;
 
   constructor(
     private countriesService: CountriesService

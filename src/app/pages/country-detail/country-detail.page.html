@@ -77,9 +77,12 @@
         <ion-note slot="end">{{ country.timezones.join(', ') }}</ion-note>
       </ion-item>
       <ion-item>
-        <!-- TODO: pro toto je třeba mapovat data -->
         <ion-label>Currency</ion-label>
-        <ion-note slot="end">{{ country.currencies | json }}</ion-note>
+        <ion-note slot="end">
+          <span *ngFor="let currency of country.currencies">
+            {{ currency.name }}
+          </span>
+        </ion-note>
       </ion-item>
     </ion-item-group>
   </ion-list>

@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {CountriesService} from "../services/countries/countries.service";
+import {CountriesService, MapCountry} from "../services/countries/countries.service";
 import {Observable} from "rxjs";
 import {Country} from "../models/country.model";
 
@@ -10,7 +10,7 @@ import {Country} from "../models/country.model";
 })
 export class Tab1Page {
 
-  countries$: Observable<Country[]>;
+  countries$: Observable<MapCountry[]>;
 
   constructor(
     private countriesService: CountriesService
@@ -18,7 +18,7 @@ export class Tab1Page {
     this.countries$ = this.countriesService.index$();
   }
 
-  transferCountry(country: Country) {
+  transferCountry(country: MapCountry) {
     this.countriesService.country = country;
   }
 }

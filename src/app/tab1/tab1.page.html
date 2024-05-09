@@ -50,10 +50,10 @@
           </ion-buttons>
         </ion-toolbar>
       </ion-header>
-      <ion-content class="ion-padding">
+      <ion-content>
         <ion-item>
-          <ion-label>Filtrace podle měny</ion-label>
-          <ion-select>
+          <ion-select label="Filtrace podle měny" placeholder="Měna"
+                      [formControl]="selectControl">
             <ion-select-option *ngFor="let c of currencies"
                                [value]="c.key">
               {{ c.name }}

@@ -3,6 +3,7 @@ import {CountriesService, MapCountry, MapCurrency} from "../services/countries/c
 import {Observable, of, tap} from "rxjs";
 import {Country} from "../models/country.model";
 import {IonModal} from "@ionic/angular";
+import {FormControl, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-tab1',
@@ -18,6 +19,8 @@ export class Tab1Page {
 
   currencies: MapCurrency[] = [];
 
+  selectControl = new FormControl('', [Validators.required])
+
   constructor(
     private countriesService: CountriesService
   ) {
@@ -26,6 +29,14 @@ export class Tab1Page {
         this.countriesOrigin = countries;
         this.currencies = this.filterCurrencies(countries);
       }));
+
+    this.selectControl.valueChanges.subscribe(value => {
+      const filteredCountries = this.countriesOrigin.filter(country => {
+        return country.currencies.findIndex((currency: MapCurrency) => currency.key === value) > -1;
+      })
+
+      this.countries$ = of(filteredCountries);
+    })
   }
 
   transferCountry(country: MapCountry) {
